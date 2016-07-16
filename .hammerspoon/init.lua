@@ -146,17 +146,17 @@ hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Right", function()
 end)
 -- 1 screen left
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
-	hs.window.focusedWindow():moveOneScreenWest(false, true)
+	hs.window.focusedWindow():moveOneScreenWest(true, true)
 end)
 -- 1 screen right
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
-	hs.window.focusedWindow():moveOneScreenEast(false, true)
+	hs.window.focusedWindow():moveOneScreenEast(true, true)
 end)
 -- 1 screen up
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", function()
-	hs.window.focusedWindow():moveOneScreenNorth(false, true)
+	hs.window.focusedWindow():moveOneScreenNorth(true, true)
 end)
 -- 1 screen down
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", function()
-	hs.window.focusedWindow():moveOneScreenSouth(false, true)
+	hs.window.focusedWindow():moveOneScreenSouth(true, true)
 end)

@@ -82,8 +82,9 @@ local display = {
 	dell = "DELL SE2416H"
 }
 local layout = {
-	{"Chrome",				nil, 	display.dell,	hs.layout.maximized, 			nil,	nil},
-	{"Textual 5 Trial", 	nil, 	display.dell,	hs.geometry.rect(0, 0, 2/3, 1),	nil,	nil},
+	{"Google Chrome",		nil, 	display.dell,	hs.layout.maximized, 			nil,	nil},
+	{"Google Chrome Canary",nil, 	display.dell,	hs.layout.maximized, 			nil,	nil},
+	{"Textual IRC Client", 	nil, 	display.dell,	hs.geometry.rect(0, 0, 2/3, 1),	nil,	nil},
 	{"Hexchat", 			nil, 	display.dell,	hs.geometry.rect(0, 0, 2/3, 1),	nil,	nil},
 	{"Discord", 			nil,	display.dell,	hs.layout.right50, 				nil,	nil},
 	{"Sublime Text",		nil,	display.cinema,	hs.layout.right50,				nil,	nil},

@@ -3,6 +3,12 @@
 !README.md
 !.gitignore
 
+!.bash_color
+!.bash_profile
+
+!.hammerspoon/*
+.hammerspoon/.DS_STORE
+
 !.vimrc
 !.gvimrc
 !.vim/*

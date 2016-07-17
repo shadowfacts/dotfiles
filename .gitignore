@@ -3,8 +3,12 @@
 !README.md
 !.gitignore
 
+!Shadowfacts.terminal
+
 !.bash_color
 !.bash_profile
+
+!.zshrc
 
 !.hammerspoon/*
 .hammerspoon/.DS_STORE

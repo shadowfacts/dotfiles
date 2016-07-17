@@ -6,6 +6,8 @@ plugins=(osx git)
 
 source $ZSH/oh-my-zsh.sh
 
+# command line tools
+
 alias fuck='$(thefuck $(fc -ln -1))'
 
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -19,4 +21,7 @@ alias oldruby="/usr/local/bin/ruby"
 alias ruby="/usr/local/Cellar/ruby/2.3.0/bin/ruby"
 
 export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
+. $(brew --prefix nvm)/nvm.shi
+
+# default file openings
+alias -s ipr=open

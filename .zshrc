@@ -1,6 +1,6 @@
 export ZSH=/Users/shadowfacts/.oh-my-zsh
 
-ZSH_THEME="honukai"
+ZSH_THEME="shadowfacts"
 
 plugins=(osx git)
 

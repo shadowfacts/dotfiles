@@ -9,6 +9,7 @@
 !.bash_profile
 
 !.zshrc
+!shadowfacts.zsh-theme
 
 !.hammerspoon/*
 .hammerspoon/.DS_STORE

@@ -2,8 +2,8 @@ local current_dir='${PWD/#$HOME/~}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}on%{$reset_color%} git:%{$fg[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}âï"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}â"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✖︎︎"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}●"
 
 local git_info='$(git_prompt_info)'
 
@@ -16,4 +16,4 @@ PROMPT="
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
 %{$fg[white]%}[%D{%r}]
-%{$terminfo[bold]$fg[red]%}â %{$reset_color%}"
+%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"

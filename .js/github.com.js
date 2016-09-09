@@ -1,10 +1,6 @@
 // utils
 let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=name] > a").attr("href");
 
-function addStyle(style) {
-	$("body").after(`<style>${style}</style>`);
-}
-
 // don't use the (ugly) new font
 // $("body").css("font-family", $("body").css("font-family").replace("BlinkMacSystemFont,", ""));
 

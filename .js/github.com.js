@@ -53,3 +53,15 @@ if (!location.hostname.startsWith("gist")) {
 		lastItem.before(exploreItem);
 	}
 }
+
+// linkify branch references in PRs
+$("span.commit-ref").each((i, el) => {
+	el = $(el);
+	let bits = el.attr("title").split(":");
+	let repo = bits[0];
+	let branch = bits[1];
+	let link = $("<a></a>");
+	link.attr("href", `https://github.com/${repo}/tree/${branch}`);
+	el.wrap(link);
+});
+$("body").after("<style>span.commit-ref:hover, span.commit-ref:hover span { text-decoration: underline; }</style>");

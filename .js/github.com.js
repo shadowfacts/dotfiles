@@ -1,10 +1,12 @@
+// utils
+let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=name] > a").attr("href");
+
 // don't use the (ugly) new font
 // $("body").css("font-family", $("body").css("font-family").replace("BlinkMacSystemFont,", ""));
 
 // releases tab
 let repoNav = $("nav.reponav");
 if (repoNav.length > 0) {
-	let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=name] > a").attr("href");
 	let releasesUrl = repoUrl + "/releases";
 	let releasesTab = $("<a></a>");
 	releasesTab.attr("href", releasesUrl);
@@ -65,3 +67,11 @@ $("span.commit-ref").each((i, el) => {
 	el.wrap(link);
 });
 $("body").after("<style>span.commit-ref:hover, span.commit-ref:hover span { text-decoration: underline; }</style>");
+
+// linkify issue/pr references in issue titles
+(function() {
+	let title = $("span.js-issue-title");
+	if (/#(\d+)/.test(title.text())) {
+		title.html(title.text().replace(/#(\d+)/, `<a href="${repoUrl}/issues/$1">#$1</a>`));
+	}
+})();

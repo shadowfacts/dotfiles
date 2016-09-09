@@ -64,12 +64,15 @@ let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=na
 (function() {
 	$("span.commit-ref").each((i, el) => {
 		el = $(el);
-		let bits = el.attr("title").split(":");
-		let repo = bits[0];
-		let branch = bits[1];
-		let link = $("<a></a>");
-		link.attr("href", `https://github.com/${repo}/tree/${branch}`);
-		el.wrap(link);
+		let title = el.attr("title");
+		if (title) {
+			let bits = title.split(":");
+			let repo = bits[0];
+			let branch = bits[1];
+			let link = $("<a></a>");
+			link.attr("href", `https://github.com/${repo}/tree/${branch}`);
+			el.wrap(link);
+		}
 	});
 	$("body").after("<style>span.commit-ref:hover, span.commit-ref:hover span { text-decoration: underline; }</style>");
 })();

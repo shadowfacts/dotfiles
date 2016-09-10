@@ -20,3 +20,5 @@
 
 !.js/*
 .js/.DS_Store
+
+!macos.sh

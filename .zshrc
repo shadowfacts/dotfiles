@@ -42,5 +42,17 @@ npm() {
 	npm "$@"
 }
 
+# Go up N directories
+up() {
+	str=""
+	count=0
+	while [ "$count" -lt "$1" ];
+	do
+		str=$str"../"
+		let count=count+1
+	done
+	cd $str
+}
+
 # default file openings
 alias -s ipr=open

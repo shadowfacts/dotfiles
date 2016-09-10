@@ -92,7 +92,7 @@ let currentUser = $("ul.header-nav.float-right > li:last > a > img").attr("alt")
 	let readme = $("#readme");
 	if (!readme.length) return;
 
-	let name = readme.find("h3").text().trim();
+	let name = readme.find("h3:first").text().trim();
 	let branch = $(".file-navigation > .select-menu.float-left > button > .js-select-button").text();
 	let editUrl = `${repoUrl}/edit/${branch}/${name}`;
 	
@@ -100,9 +100,9 @@ let currentUser = $("ul.header-nav.float-right > li:last > a > img").attr("alt")
 	div.attr("id", "readme-edit-link");
 	div.css("position", "absolute");
 	div.css("top", "10px");
-	div.css("right", "40px");
+	div.css("right", "10px");
 	div.css("opacity", "0.2");
-	div.css("transform", "opacity 250ms");
+	div.css("transition", "opacity 250ms");
 
 	let a = $("<a></a>");
 	a.attr("href", editUrl);
@@ -116,7 +116,7 @@ let currentUser = $("ul.header-nav.float-right > li:last > a > img").attr("alt")
 
 	addStyle(`
 		#readme.blob #readme-edit-link { display: none; }
-		#readme-edit-link:hover { opacity: 1; }
+		#readme-edit-link:hover { opacity: 1 !important; }
 		`);
 })();
 

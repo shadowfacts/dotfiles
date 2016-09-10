@@ -186,3 +186,26 @@ let currentUser = $("ul.header-nav.float-right > li:last > a > img").attr("alt")
 		});
 	});
 })();
+
+// file copy button
+(function() {
+	if (!$("[data-line-number='1']").length) {
+		return;
+	}
+
+	let targetSibling = $("#raw-url")
+	let fileUrl = targetSibling.attr("href");
+
+	let copyBtn = $("<a></a>");
+	copyBtn.text("Copy");
+	copyBtn.attr("href", fileUrl);
+	copyBtn.addClass("btn btn-sm copy-btn");
+
+	copyBtn.click((e) => {
+		e.preventDefault();
+		let fileContents = $(".js-file-line-container").get(0).innerText;
+		copyToClipBoard(fileContents);
+	});
+
+	targetSibling.after(copyBtn);
+})();

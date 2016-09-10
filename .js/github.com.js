@@ -35,7 +35,8 @@ let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=na
 			}
 		});
 
-		if (location.pathname.endsWith("/releases")) {
+		let pathParts = location.pathname.split("/");
+		if (pathParts[pathParts.length - 1] == "releases" || pathParts[pathParts.length - 1] == "tags" || pathParts[pathParts.length - 2] == "releases" || pathParts[pathParts.length - 3] == "releases") {
 			$("nav.reponav > span:first > a").removeClass("selected");
 			releasesTab.addClass("selected");
 		}

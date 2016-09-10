@@ -18,4 +18,5 @@
 !.gvimrc
 !.vim/*
 
-!.js/
+!.js/*
+.js/.DS_Store

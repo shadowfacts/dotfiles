@@ -117,3 +117,16 @@ let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=na
 		#readme-edit-link:hover { opacity: 1; }
 		`);
 })();
+
+// tab size 4
+(function() {
+	addStyle(`
+		.tab-size[data-tab-size='2'],
+		.tab-size[data-tab-size='4'],
+		.tab-size[data-tab-size='8'],
+		.inline-review-comment,
+		.gist table.lines {
+			tab-size: 4 !important;
+		}
+		`);
+})();

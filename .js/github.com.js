@@ -92,7 +92,7 @@ let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=na
 
 	let name = readme.find("h3").text().trim();
 	let branch = $(".file-navigation > .select-menu.float-left > button > .js-select-button").text();
-	let editUrl = `/${repoUrl}/edit/${branch}/${name}`;
+	let editUrl = `${repoUrl}/edit/${branch}/${name}`;
 	
 	let div = $("<div></div>");
 	div.attr("id", "readme-edit-link");

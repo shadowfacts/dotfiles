@@ -47,7 +47,7 @@ let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=na
 	if (!location.hostname.startsWith("gist")) {
 		let lastItem = $(".header-nav[role=navigation] > .header-nav-item:last");
 
-		if (lastItem.find("a.header-nav-link").text() != "Explore") {
+		if (lastItem.prev().find("a.header-nav-link").text() != "Explore") {
 			let exploreItem = $("<li></li>");
 			exploreItem.addClass("header-nav-item");
 			let exploreLink = $("<a></a>");

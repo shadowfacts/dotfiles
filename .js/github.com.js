@@ -1,5 +1,6 @@
 // utils
 let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=name] > a").attr("href");
+let currentUser = $("ul.header-nav.float-right > li:last > a > img").attr("alt").substring(1);
 
 // don't use the (ugly) new font
 // $("body").css("font-family", $("body").css("font-family").replace("BlinkMacSystemFont,", ""));
@@ -130,4 +131,58 @@ let repoUrl = $("div.repohead-details-container > h1.public > strong[itemprop=na
 			tab-size: 4 !important;
 		}
 		`);
+})();
+
+// add avatars to reactions
+(function() {
+	$(".comment-reactions.has-reactions").each((i, container) => {
+		container = $(container);
+		let reactionButtons = container.find(".comment-reactions-options .reaction-summary-item[aria-label]");
+
+		reactionButtons.each((i, button) => {
+			button = $(button);
+
+			let participantCount = parseInt(button.html().split("</g-emoji>")[1])
+			let participants = button.attr("aria-label")
+				.replace(/ reacted with.+/, "")
+				.replace(/,? and /, ", ")
+				.replace(/, \d+ more/, "")
+				.split(", ");
+
+			let userPosition = participants.indexOf(currentUser);
+			if (participantCount == 1 && userPosition > -1) {
+				return;
+			}
+
+			if (button.find("div.participants-container").length == 0) {
+				button.append("<div class=\"participants-container\"></div>");
+			}
+
+			if (userPosition > -1) {
+				participants.splice(userPosition, 1);
+			}
+
+			let firstThreeParticipants = participants.slice(0, 3);
+			let participantsContainer = button.find(".participants-container");
+
+			participantsContainer.html("");
+			participantsContainer.css("display", "inline-block");
+
+			firstThreeParticipants.forEach((it) => {
+				let link = $("<a></a>");
+				link.attr("href", `https://github.com/${it}`);
+				
+				let img = $("<img>");
+				img.attr("src", `https://github.com/${it}.png`);
+				img.css("width", "20px");
+				img.css("height", "20px");
+				img.css("border-radius", "3px");
+				img.css("margin-left", "3px");
+				img.css("vertical-align", "middle");
+				link.append(img);
+
+				participantsContainer.append(link);
+			});
+		});
+	});
 })();

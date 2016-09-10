@@ -1,5 +1,10 @@
 function addStyle(style) {
-	$("body").after(`<style>${style}</style>`);
+	let el = $("style#dotjs-style");
+	if (!el.length) {
+		$("body").after(`<style id="dotjs-style">${style}</style>`);
+	} else {
+		$("style#dotjs-style").append(style);
+	}
 }
 
 function copyToClipBoard(text) {

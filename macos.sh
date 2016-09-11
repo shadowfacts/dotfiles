@@ -130,6 +130,9 @@ brew install zsh
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# Change shell
+chsh -s /usr/bin/zsh
+
 # Symlink all the things
 ln -s .hammerspoon $HOME/.hammerspoon
 ln -s .vim $HOME/.vim

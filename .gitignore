@@ -24,3 +24,5 @@
 !macos.sh
 
 !Preferences.sublime-settings
+
+!.gradle/gradle.properties

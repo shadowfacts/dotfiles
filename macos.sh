@@ -67,6 +67,10 @@ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 # Disable mouse scroll acceleration
 defaults write .GlobalPreferences com.apple.scrollwheel.scaling -1
 
+# Fastest key repeat speed
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 2
+
 # Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 

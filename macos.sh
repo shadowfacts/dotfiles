@@ -58,6 +58,12 @@ chflags nohidden ~/Library
 # Show the /Volumes folder
 chflags nohidden /Volumes
 
+# Disable mouse acceleration
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+# Disable mouse scroll acceleration
+defaults write .GlobalPreferences com.apple.scrollwheel.scaling -1
+
 # Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 

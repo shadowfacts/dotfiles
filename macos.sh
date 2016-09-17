@@ -149,8 +149,27 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # Safari: Set downloads folder to Desktop
 defaults write com.apple.Safari DownloadsPath -string "$HOME/Desktop/"
 
+# Symlink all the things
+ln -s $HOME/dotfiles/.hammerspoon $HOME/.hammerspoon
+ln -s $HOME/dotfiles/.vim $HOME/.vim
+ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/shadowfacts.zsh-theme $HOME/.oh-my-zsh/themes/shadowfacts.zsh-theme
+
 # Install Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Install git & hub
+brew install git
+brew install hub
+
+# Git: Set identity
+git config --global user.name "Shadowfacts"
+git config --global user.email "me@shadowfacts.net"
+# Git: Enable autocrlf 
+git config --global core.autocrlf input
+# Git: Always sign commits
+git config --global commit.gpgsign true
 
 # Install zsh
 brew install zsh
@@ -160,13 +179,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # Change shell
 chsh -s /usr/bin/zsh
-
-# Symlink all the things
-ln -s $HOME/dotfiles/.hammerspoon $HOME/.hammerspoon
-ln -s $HOME/dotfiles/.vim $HOME/.vim
-ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
-ln -s $HOME/dotfiles/shadowfacts.zsh-theme $HOME/.oh-my-zsh/themes/shadowfacts.zsh-theme
 
 source $HOME/.zshrc
 

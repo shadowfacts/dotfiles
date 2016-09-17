@@ -6,8 +6,10 @@ plugins=(osx git)
 
 source $ZSH/oh-my-zsh.sh
 
-# command line tools
+# Use Homebrew bin before defaults
+export PATH="/usr/local/bin:$PATH"
 
+# command line tools
 alias fuck='$(thefuck $(fc -ln -1))'
 
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"

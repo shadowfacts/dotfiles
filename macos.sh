@@ -153,6 +153,7 @@ defaults write com.apple.Safari DownloadsPath -string "$HOME/Desktop/"
 ln -s $HOME/dotfiles/.hammerspoon $HOME/.hammerspoon
 ln -s $HOME/dotfiles/.vim $HOME/.vim
 ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/Preferences.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/shadowfacts.zsh-theme $HOME/.oh-my-zsh/themes/shadowfacts.zsh-theme
 

@@ -100,7 +100,7 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 defaults write com.apple.terminal StringEncodings -array 4
 
 # Terminal: Use Shadowfacts.terminal theme
-oascript <<EOD
+osascript <<EOD
 tell application "Terminal"
 	
 	local allOpenedWindows
@@ -171,6 +171,9 @@ git config --global user.email "me@shadowfacts.net"
 git config --global core.autocrlf input
 # Git: Always sign commits
 git config --global commit.gpgsign true
+
+# Install thefuck
+brew install thefuck
 
 # Install zsh
 brew install zsh

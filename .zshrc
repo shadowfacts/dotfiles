@@ -20,7 +20,7 @@ alias python=python3
 alias pip=pip3
 
 alias oldruby="/usr/local/bin/ruby"
-alias ruby="/usr/local/Cellar/ruby/2.3.0/bin/ruby"
+alias ruby="/usr/local/Cellar/ruby/2.3.1/bin/ruby"
 
 # lazily load nvm
 export NVM_DIR=~/.nvm

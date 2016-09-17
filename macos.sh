@@ -49,6 +49,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Finder: When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
+# Finder: Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -75,6 +78,9 @@ defaults write com.apple.dock autohide -bool true
 
 # Dock: Make hidden application icons show as translucent
 defaults write com.apple.dock showhidden -bool true
+
+# Dock: Remove everything from the right-hand section except the Trash
+defaults write com.apple.dock persistent-others -array
 
 # Mail: Disable send and reply animations
 defaults write com.apple.mail DisableReplyAnimations -bool true
@@ -135,6 +141,9 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 # Photos: Don't automatically when devices are connected
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+# Safari: Set downloads folder to Desktop
+defaults write com.apple.Safari DownloadsPath -string "$HOME/Desktop/"
 
 # Install Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

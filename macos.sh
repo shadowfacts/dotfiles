@@ -162,11 +162,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 chsh -s /usr/bin/zsh
 
 # Symlink all the things
-ln -s .hammerspoon $HOME/.hammerspoon
-ln -s .vim $HOME/.vim
-ln -s .vimrc $HOME/.vimrc
-ln -s .zshrc $HOME/.zshrc
-ln -s shadowfacts.zsh-theme $HOME/.oh-my-zsh/themes/shadowfacts.zsh-theme
+ln -s $HOME/dotfiles/.hammerspoon $HOME/.hammerspoon
+ln -s $HOME/dotfiles/.vim $HOME/.vim
+ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/shadowfacts.zsh-theme $HOME/.oh-my-zsh/themes/shadowfacts.zsh-theme
 
 source $HOME/.zshrc
 

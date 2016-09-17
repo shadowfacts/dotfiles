@@ -61,6 +61,15 @@ chflags nohidden /Volumes
 # Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
+# Dock: Set minimization effect to scale
+defaults write com.apple.dock mineffect -string "scale"
+
+# Dock: Automatically hide/show
+defaults write com.apple.dock autohide -bool true
+
+# Dock: Make hidden application icons show as translucent
+defaults write com.apple.dock showhidden -bool true
+
 # Mail: Disable send and reply animations
 defaults write com.apple.mail DisableReplyAnimations -bool true
 defaults write com.apple.mail DisableSendAnimations -bool true

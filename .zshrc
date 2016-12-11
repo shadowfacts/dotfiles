@@ -53,7 +53,7 @@ up() {
 		str=$str"../"
 		let count=count+1
 	done
-	cd $str
+	cd $str"$2"
 }
 
 # default file openings

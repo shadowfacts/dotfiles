@@ -56,5 +56,32 @@ up() {
 	cd $str"$2"
 }
 
+# Git helper functions
+psh() {
+	branch=`git branch 2> /dev/null | grep \* | awk '{print $2}'`
+	git push origin $branch "$@"
+}
+
+pll() {
+	branch=`git branch 2> /dev/null | grep \* | awk '{print $2}'`
+	git pull origin $branch "$@"
+}
+
+a() {
+	git add "$@"
+}
+
+s() {
+	git status
+}
+
+c() {
+	git commit "$@"
+}
+
+ca() {
+	git commit --amend "$@"
+}
+
 # default file openings
 alias -s ipr=open

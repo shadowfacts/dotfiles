@@ -31,51 +31,6 @@ end
 
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 
--- caffeinate menubar
-local caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-	if state then
-		caffeine:setIcon("~/.hammerspoon/caffeine-on.pdf")
-	else
-		caffeine:setIcon("~/.hammerspoon/caffeine-off.pdf")
-	end
-end
-
-function caffeineClicked()
-	setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
-end
-
-if caffeine then
-	caffeine:setClickCallback(caffeineClicked)
-	setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
-end
-
--- pause everything on mute
-local muted = false
-local state = ""
-local volume = 0
-hs.hotkey.bind({}, "F9", function()
-	muted = not muted
-	if muted then
-		state = "'" .. hs.itunes.getPlaybackState() .. "'"
-		volume = hs.audiodevice.current().volume
-		hs.audiodevice.current().device:setVolume(0)
-		alert("Muted")
-		if state == hs.itunes.state_playing then 
-			alert("iTunes paused")
-			hs.itunes.pause()
-		end
-	else
-		hs.audiodevice.current().device:setVolume(volume)
-		alert("Unmuted")
-		if state == hs.itunes.state_playing then
-			alert("iTunes played")
-			hs.itunes.play()
-			state = ""
-		end
-	end
-end)
-
 -- layout all configured applications
 local display = {
 	cinema = "LED Cinema Display",
@@ -96,67 +51,128 @@ hs.hotkey.bind({"cmd", "alt"}, "L", function()
 end)
 
 -- window movement
+local padding = 20
 -- center
 hs.hotkey.bind({"cmd", "alt"}, "C", function()
-	hs.window.focusedWindow():centerOnScreen()
+	hs.window.focusedWindow():centerOnScreen(0)
 end)
 -- full
 hs.hotkey.bind({"cmd", "alt"}, "F", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0, 1, 1))
+	local window = hs.window.focusedWindow()
+	local screen = window:screen()
+	local frame = screen:frame()
+	frame.x = frame.x + padding
+	frame.y = frame.y + padding
+	frame.w = frame.w - padding * 2
+	frame.h = frame.h - padding * 2
+	window:setFrame(frame, 0)
 end)
--- left half
+-- left half of current
 hs.hotkey.bind({"cmd", "alt", "shift"}, "Left", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0, 0.5, 1))
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.w = (frame.w / 2) - padding / 2
+	window:setFrame(frame, 0)
 end)
 -- right half
 hs.hotkey.bind({"cmd", "alt", "shift"}, "Right", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0.5, 0, 0.5, 1))
-end)
--- left 2/3
-hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "Left", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0, 2/3, 1))
-end)
--- right 2/3
-hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "Right", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(1/3, 0, 2/3, 1))
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.w = (frame.w - padding) / 2
+	frame.x = frame.x + frame.w + padding
+	window:setFrame(frame, 0)
 end)
 -- top half
 hs.hotkey.bind({"cmd", "alt", "shift"}, "Up", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0, 1, 0.5))
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.h = (frame.h / 2) - padding / 2
+	window:setFrame(frame, 0)
 end)
 -- bottom half
 hs.hotkey.bind({"cmd", "alt", "shift"}, "Down", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0.5, 1, 0.5))
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.h = (frame.h - padding) / 2
+	frame.y = frame.y + frame.h + padding
+	window:setFrame(frame, 0)
 end)
--- top left
-hs.hotkey.bind({"cmd", "ctrl"}, "Left", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0, 0.5, 0.5))
-end)
--- bottom left
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Left", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0, 0.5, 0.5, 0.5))
-end)
--- top right
-hs.hotkey.bind({"cmd", "ctrl"}, "Right", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0.5, 0, 0.5, 0.5))
-end)
--- bottom right
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Right", function()
-	hs.window.focusedWindow():moveToUnit(hs.geometry.rect(0.5, 0.5, 0.5, 0.5))
-end)
--- 1 screen left
+-- left by half
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
-	hs.window.focusedWindow():moveOneScreenWest(true, true)
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.x = frame.x - (frame.w + padding) / 2
+	window:setFrame(frame, 0)
 end)
--- 1 screen right
+-- right by half
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
-	hs.window.focusedWindow():moveOneScreenEast(true, true)
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.x = frame.x + (frame.w + padding) / 2
+	window:setFrame(frame, 0)
 end)
--- 1 screen up
+-- up by half
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", function()
-	hs.window.focusedWindow():moveOneScreenNorth(true, true)
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.y = frame.y - (frame.h + padding) / 2
+	window:setFrame(frame, 0)
 end)
--- 1 screen down
+-- down by half
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", function()
-	hs.window.focusedWindow():moveOneScreenSouth(true, true)
+	local window = hs.window.focusedWindow()
+	local frame = window:frame()
+	frame.y = frame.y + (frame.h + padding) / 2
+	window:setFrame(frame, 0)
 end)
+
+
+-- 1 screen left
+-- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
+-- 	hs.window.focusedWindow():moveOneScreenWest(true, true)
+-- end)
+-- -- 1 screen right
+-- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
+-- 	hs.window.focusedWindow():moveOneScreenEast(true, true)
+-- end)
+
+-- Googler
+-- hs.hotkey.bind({"cmd", "alt"}, "g", function()
+-- 	local ENDPOINT = "https://www.googleapis.com/customsearch/v1?cx=007161902339625765643%3Ab8i_gdvz0-s&key=AIzaSyDbY6r2Qk-KQ15jUXSnl8_66eZupqw_2q4&q="
+	
+-- 	local chooser = hs.chooser.new(function(chosen)
+-- 		hs.execute("open "..chosen.subText)
+-- 	end)
+
+-- 	local theData = {}
+
+-- 	function update()
+-- 		if theData["items"] ~= nil then
+-- 		local choices = hs.fnutils.imap(theData["items"], function(item)
+-- 			return {
+-- 				["text"] = item["title"],
+-- 				["subText"] = item["link"],
+-- 			}
+-- 		end)
+
+-- 		chooser:choices(choices)
+-- 	end
+
+-- 	local timer = hs.timer.new(3, update)
+
+-- 	chooser:queryChangedCallback(function(string)
+-- 		local query = hs.http.encodeForQuery(string)
+
+-- 		hs.http.asyncGet(ENDPOINT..query, nil, function(status, data)
+-- 			if not data then return end
+-- 			local ok, results = pcall(function() return hs.json.decode(data) end)
+-- 			if not ok then return end
+
+-- 			theData = data
+-- 			timer:setNextTrigger(3)
+-- 		end)
+-- 	end)
+
+-- 	chooser:searchSubText(false)
+-- 	chooser:show()
+-- end)

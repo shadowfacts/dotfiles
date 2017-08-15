@@ -26,3 +26,5 @@
 !Preferences.sublime-settings
 
 !.gradle/gradle.properties
+
+!iterm2_settings/*
